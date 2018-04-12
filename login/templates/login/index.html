@@ -1,0 +1,145 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}HOME{% endblock %}
+{% block css %}
+<!-- DataTables -->
+<link rel="stylesheet" href="{% static 'DataTables-1.10.15/media/css/jquery.dataTables.css' %}">
+<!-- Theme style -->
+<link rel="stylesheet" href="{% static 'dist/css/AdminLTE.min.css' %}">
+<!-- AdminLTE Skins. Choose a skin from the css/skins
+     folder instead of downloading all of them to reduce the load. -->
+<link rel="stylesheet" href="{% static 'dist/css/skins/_all-skins.min.css' %}">
+{% endblock %}
+{% block script %}
+<!-- DataTables -->
+<script type="text/javascript" language="javascript" src="{% static 'js/jquery-1.12.4.js' %}"></script>
+<script type="text/javascript" language="javascript" src="{% static 'DataTables-1.10.15/media/js/jquery.js' %}"></script>
+<script type="text/javascript" language="javascript" src="{% static 'DataTables-1.10.15/media/js/jquery.dataTables.js' %}"></script>
+<!-- SlimScroll 
+<script src="{% static 'plugins/slimScroll/jquery.slimscroll.min.js' %}"></script>
+<!-- FastClick
+<script src="{% static 'plugins/fastclick/fastclick.js' %}"></script>
+<!-- AdminLTE App 
+<script src="{% static 'dist/js/app.min.js' %}"></script>
+<!-- AdminLTE for demo purposes 
+<script src="{% static 'dist/js/demo.js' %}"></script>
+<!-- page script -->
+<script>
+  $(document).ready(function() {
+    $('#report_table').DataTable();
+} );
+</script>
+{% endblock %}
+
+{% block content %}
+    {% if request.session.is_login %}
+    <h1>Welcome back,{{ request.session.user_name }}！</h1>
+
+     <!-- Content Header (Page header) -->
+     <section class="content-header">
+        <h1>
+          Reports Lists
+        </h1>
+        <ol class="breadcrumb">
+          <li class="active">Reports</li>
+        </ol>
+      </section>
+          <!-- Main content -->
+    <section class="content">
+        <div class="row">
+        <div class="col-xs-12">
+    
+          <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">Reportlists</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <table id="report_table" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Sex</th>
+                  <th>Age</th>
+                  <th>Hospital</th>
+                  <th>Exam Type</th>
+                  <th>Position</th>
+                  <th>Mothod</th>
+                  <th>Exam Date</th>
+                  <th>Indication</th>
+                  <th>Findings</th>
+                  <th>Comments</th>
+                  <th>Doctor</th>
+                  <th>Report Date</th>
+                  <th>Status</th>
+                  <th>Tool</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                {% for rep in allrep %}
+                <tr>
+                  <!--<td>{{ forloop.counter }}</td>-->
+                  <td>{{ rep.examnum }}</td>
+                  <td>{{ rep.name }}</td>
+                  <td>{{ rep.sex }}</td>
+                  <td>{{ rep.age }}{{ rep.ageunit }}</td>
+                  {% if rep.hospital == "1" %}
+                  <td>UTH</td>
+                  {% elif rep.hospital == "2" %}
+                  <td>CDH</td>
+                  {% endif %}
+                  <td>{{ rep.examtype }}</td>
+                  <td>{{ rep.position }}</td>
+                  <td>{{ rep.method }}</td>
+                  <td>{{ rep.examdate }}</td>
+                  <td>{{ rep.indication }}</td>
+                  <td>{{ rep.findings }}</td>
+                  <td>{{ rep.comments }}</td>
+                  <td>{{ rep.repdoctor }}</td>
+                  <td>{{ rep.reportdate }}</td>
+                  <td>{{ rep.status }}</td>
+                  <td><a href= "/edit/{{ rep.id }}"  target="_blank">EDIT</a>
+                  <a href= "/print/{{ rep.id }}"  target="_blank">PRINT</a></td>
+                </tr>
+                {% empty %}
+                  <tr>No Data ！</tr>
+                {% endfor %}
+
+            </tbody>
+            <tfoot>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Sex</th>
+              <th>Age</th>
+              <th>Hospital</th>
+              <th>Exam Type</th>
+              <th>Position</th>
+              <th>Mothod</th>
+              <th>Exam Date</th>
+              <th>Indication</th>
+              <th>Findings</th>
+              <th>Comments</th>
+              <th>Doctor</th>
+              <th>Report Date</th>
+              <th>Status</th>
+              <th>Tool</th>
+            </tr>
+            </tfoot>
+          </table>
+        </div>
+        <!-- /.box-body -->
+      </div>
+      <!-- /.box -->
+    </div>
+    <!-- /.col -->
+    </div>
+    <!-- /.row -->
+    </section>
+    {% else %}
+    <h1>Please login!</h1>
+    {% endif %}
+{% endblock %}
+

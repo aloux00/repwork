@@ -1,0 +1,186 @@
+
+{% load staticfiles %}
+<html>  
+  <head>  
+      <title>print report</title>  
+      <style media="print">  
+          .noprint { display : none; }  
+      </style>  
+      <script language="JavaScript">  
+          function doPrintSetup(){  
+              //打印设置  
+              printWB.ExecWB(8,1)  
+          }  
+          function doPrintPreview(){  
+              //打印预览  
+              printWB.ExecWB(7,1)  
+          }  
+          function doPrint(){  
+              //直接打印  
+              printWB.ExecWB(6,6)  
+          }  
+      </script>   
+  </head>  
+  
+ 
+<body lang=ZH-CN style='tab-interval:21.0pt'>
+
+<div class=Section1 style='layout-grid:18.0pt'>
+
+<table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0 width=713
+ style='width:535.0pt;border-collapse:collapse;mso-yfti-tbllook:1184;
+ mso-padding-alt:0cm 0cm 0cm 0cm'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;height:57.2pt'>
+  <td width=158 rowspan=2 style='width:118.55pt;border:none;border-bottom:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:57.2pt'>
+  <p class=MsoNormal style='line-height:150%'><span lang=EN-GB
+  style='font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif";
+  mso-ansi-language:EN-GB'>P.O. Box 51337</span></p>
+  <p class=MsoNormal style='line-height:150%'><span lang=EN-GB
+  style='font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif";
+  mso-ansi-language:EN-GB'>Lusaka </span></p>
+  <p class=MsoNormal style='line-height:150%'><span lang=EN-GB
+  style='font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif";
+  mso-ansi-language:EN-GB'>Fax: +260 1257706</span></p>
+  <p class=MsoNormal style='line-height:150%'><span lang=EN-GB
+  style='font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif";
+  mso-ansi-language:EN-GB'>Tel: 257791, 253443</span></p>
+  </td>
+  <td width=116 style='width:87.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:57.2pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US>&nbsp;</span></p>
+  </td>
+  <td width=140 colspan=3 style='width:104.75pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:57.2pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-family:"Arial","sans-serif";
+  mso-no-proof:yes'><img width=107 height=73 id="_x0000_i1025"
+  src="{% static 'image001.gif' %}"></span></p>
+  </td>
+  <td width=89 style='width:66.6pt;padding:0cm 5.4pt 0cm 5.4pt;height:57.2pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US>&nbsp;</span></p>
+  </td>
+  <td width=211 rowspan=2 style='width:158.1pt;border:none;border-bottom:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:57.2pt'>
+  <p class=MsoNormal style='line-height:150%'><span lang=EN-GB
+  style='font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif";
+  mso-ansi-language:EN-GB'>CT No:{{ rf.examnum.value }}</span></p>
+  <p class=MsoNormal style='line-height:150%'><span lang=EN-GB
+  style='font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif";
+  mso-ansi-language:EN-GB'>DOB:{{ rf.age.value }}{{ rf.ageunit.value }}</span></p>
+  <p class=MsoNormal style='line-height:150%'><span lang=EN-GB
+  style='font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif";
+  mso-ansi-language:EN-GB'>Sex:{{ rf.sex.value }}</span></p>
+  <p class=MsoNormal style='line-height:150%'><span lang=EN-GB
+  style='font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif";
+  mso-ansi-language:EN-GB'>Pt contact </span></p>
+  <p class=MsoNormal style='line-height:150%'><span lang=EN-GB
+  style='font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif";
+  mso-ansi-language:EN-GB'>No__________</span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:1;height:78.75pt'>
+  <td width=344 colspan=5 style='width:258.35pt;border:none;border-bottom:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:78.75pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:150%'><b><span
+  lang=EN-US style='font-size:14.0pt;line-height:150%;font-family:"Arial","sans-serif"'>MINISTRY
+  OF HEALTH</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center;line-height:150%'><b><span
+  lang=EN-US style='font-family:"Arial","sans-serif"'>UNIVERSITY TEACHING
+  HOSPITALS</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center;line-height:150%'><b><span
+  lang=EN-US style='font-family:"Arial","sans-serif"'>CANCER DISEASES HOSPITAL</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-family:"Arial","sans-serif"'>{{ rf.examtype.value }} REPORT</span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:2;height:28.75pt'>
+  <td width=351 colspan=3 style='width:263.1pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:28.75pt'>
+  <p class=MsoNormal><b><span lang=EN-US style='font-size:10.0pt;font-family:
+  "Arial","sans-serif"'>NAME:&nbsp;{{ rf.name.value }} </span></b></p>
+  </td>
+  <td width=363 colspan=4 style='width:271.9pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:28.75pt'>
+  <p class=MsoNormal><b><span lang=EN-US style='font-size:10.0pt;font-family:
+  "Arial","sans-serif"'>DATE OF EXAM:{{ rf.examdate.value }}</span></b></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:3;height:37.9pt'>
+  <td width=713 colspan=7 style='width:535.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:37.9pt'>
+  <p class=MsoNormal><b><u><span lang=EN-US style='font-size:10.0pt;font-family:
+  "Arial","sans-serif"'>{{ rf.examtype.value }} {{ rf.position.value }} {{ rf.method.value }}</span></u></b></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:4;height:37.9pt'>
+  <td width=713 colspan=7 style='width:535.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:37.9pt'>
+  <p class=MsoNormal><b><u><span lang=EN-US style='font-size:10.0pt;font-family:
+  "Arial","sans-serif"'>Indication: {{ rf.indication.value }}</span></u></b></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:5;height:261.4pt'>
+  <td width=713 colspan=7 valign=top style='width:535.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:261.4pt'>
+  <p class=MsoNormal><b><span lang=EN-US style='font-size:10.0pt;font-family:
+  "Arial","sans-serif"'>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><u><span lang=EN-US style='font-size:10.0pt;font-family:
+  "Arial","sans-serif"'>Findings:</span></u></b><b><span lang=EN-US
+  style='font-size:10.0pt;font-family:"Arial","sans-serif"'> </span></b></p>
+  <p class=MsoListParagraph style='text-align:justify;text-justify:inter-ideograph;
+  text-indent:-18.0pt'><span lang=EN-US style='font-family:"Arial","sans-serif"'><div style="padding-left:60px"><pre>{{ rf.findings.value }}</pre></div></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:6;height:106.6pt'>
+  <td width=713 colspan=7 style='width:535.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:106.6pt'>
+  <p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
+  lang=EN-US style='font-size:10.0pt;font-family:"Arial","sans-serif"'>Comment:</span></p>
+  <p class=MsoListParagraph style='text-align:justify;text-justify:inter-ideograph;
+  text-indent:-18.0pt; padding-left:60px'><span lang=EN-US style='font-family:"Arial","sans-serif"'>-</span><span
+  lang=EN-US style='font-size:10.0pt;font-family:"Arial","sans-serif"'>{{ rf.comments.value }}</span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:7;height:26.5pt'>
+  <td width=713 colspan=7 style='width:535.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:26.5pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-size:10.0pt;font-family:"Arial","sans-serif"'>{{ rf.repdoctor.value }}<b> </b></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:8;height:26.5pt'>
+  <td width=355 colspan=4 style='width:266.1pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:26.5pt'>
+  <p class=MsoNormal><b><span lang=EN-US style='font-size:10.0pt;font-family:
+  "Arial","sans-serif"'>RADIOLOGIST</span></b></p>
+  </td>
+  <td width=359 colspan=3 style='width:268.9pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:26.5pt'>
+  <p class=MsoNormal><b><span lang=EN-US style='font-size:10.0pt;font-family:
+  "Arial","sans-serif"'>DATE: {{ rf.reportdate.value }}</span></p>
+</td></span></b><span lang=EN-US style='font-size:
+  10.0pt;font-family:"Arial","sans-serif"'>&nbsp;</span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:9;mso-yfti-lastrow:yes'>
+  <td width=158 style='width:118.55pt;padding:0cm 0cm 0cm 0cm'></td>
+  <td width=116 style='width:87.0pt;padding:0cm 0cm 0cm 0cm'></td>
+  <td width=77 style='width:57.55pt;padding:0cm 0cm 0cm 0cm'></td>
+  <td width=4 style='width:3.0pt;padding:0cm 0cm 0cm 0cm'></td>
+  <td width=59 style='width:44.2pt;padding:0cm 0cm 0cm 0cm'></td>
+  <td width=89 style='width:66.6pt;padding:0cm 0cm 0cm 0cm'></td>
+  <td width=211 style='width:158.1pt;padding:0cm 0cm 0cm 0cm'></td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+</div>
+ <!--<div class="noprint">  
+  <object id="printWB" style="dispaly:none" classid="clsid:8856F961-340A-11D0-A96B-00C04FD705A2" height="0"></object>  
+  <input type="button" value="Print Settings" onclick="doPrintSetup();"></input>  
+  <input type="button" value="Printing preview " onclick="doPrintPreview();"></input>  
+  <input type="button" value="Print" onclick="doPrint();"></input>  
+  <input type="button" value="Close" onclick="printWB.ExecWB(45,1);"></input>  
+</div>-->
+</body>
+
+</html>

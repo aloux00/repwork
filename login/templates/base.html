@@ -1,0 +1,115 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>{% block title %}base{% endblock %}</title>
+  <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+   <!-- Font Awesome -->
+    <link rel="stylesheet" href="{% static 'plugins/font-awesome-4.6.3/css/font-awesome.min.css' %}">
+  <!-- Ionicons -->
+    <link rel="stylesheet" href="{% static 'plugins/ionicons-2.0.1/css/ionicons.min.css' %}">
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+
+    <script type="text/javascript" charset="utf8" src="{% static 'js/jquery.min.js' %}"></script>
+    <script type="text/javascript" charset="utf8" src="{% static 'bootstrap-3.3.7-dist/js/bootstrap.min.js' %}"></script>
+    <link href="{% static '/css/datetimepicker.css' %}" type="text/css" media="all" rel="stylesheet" />
+    <script type="text/javascript" src="{% static '/js/bootstrap-datetimepicker.js' %}"></script>
+    <!-- Bootstrap -->
+    <link href="{% static 'bootstrap-3.3.7-dist/css/bootstrap.min.css' %}" rel="stylesheet">
+    
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    {% block css %}
+    <!-- DataTables -->
+    <link rel="stylesheet" href="{% static 'DataTables-1.10.15/media/css/jquery.dataTables.css' %}">
+<!-- Theme style -->
+    <link rel="stylesheet" href="{% static 'dist/css/AdminLTE.min.css' %}">
+<!-- AdminLTE Skins. Choose a skin from the css/skins
+     folder instead of downloading all of them to reduce the load. -->
+    <link rel="stylesheet" href="{% static 'dist/css/skins/_all-skins.min.css' %}">
+
+    {% endblock %}
+  </head>
+  <body>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#my-nav" aria-expanded="false">
+            <span class="sr-only">Navigator</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Mysite</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="my-nav">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="/index/">HOME</a></li>
+          </ul>
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="/creat/">NEW REPORT</a></li>
+          </ul>
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="/index/">HOME</a></li>
+          </ul>                    
+          <ul class="nav navbar-nav navbar-right">
+              {% if request.session.is_login %}
+                  <li><a href="#">Current User：{{ request.session.user_name }}</a></li>
+                  <li><a href="/logout/">Logout</a></li>
+              {% else %}
+                  <li><a href="/login/">Login</a></li>
+              {% endif %}
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+
+    {% block content %}{% endblock %}
+
+
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
+    <div class="pull-right hidden-xs">
+      <b>Version</b> 1.0.0
+    </div>
+    <strong>Copyright &copy; 2018- REPORT WORKSTATION</a>.</strong> All rights
+    reserved.    CHINA AID
+  </footer>
+
+
+</div>
+<!-- ./wrapper -->
+<!-- jQuery 2.2.3 -->
+<script src="{% static 'plugins/jQuery/jquery-2.2.3.min.js' %}"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="{% static 'plugins/jQueryUI/jquery-ui.min.js' %}"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+  $.widget.bridge('uibutton', $.ui.button);
+</script>
+<!-- Bootstrap 3.3.6 -->
+<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+
+{% block script %}
+{% endblock %}
+
+</body>
+</html>

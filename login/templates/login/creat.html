@@ -1,0 +1,57 @@
+
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}CREATE REPORT{% endblock %}
+
+<!--{% block css %}<link href="{% static 'css/login.css' %}" rel="stylesheet"/>{% endblock %}-->
+{% block content %}
+{% if request.session.is_login %}
+
+        <div class="container">
+        
+        <form class='form-create' action="/creat/" method="post">
+            {% if message %}
+            <div class="alert alert-warning">{{ message }}</div>
+            {% endif %} 
+            {% csrf_token %}
+            <!-- Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop -->
+            <div class="row">
+                <div class="col-md-1">{{ rf.examnum.label_tag }}{{ rf.examnum }}</div>
+                <div class="col-md-3">{{ rf.name.label_tag }}{{ rf.name }}</div>
+                <div class="col-md-1">{{ rf.sex.label_tag }}{{ rf.sex }}</div>
+                <div class="col-md-1">{{ rf.age.label_tag }}{{ rf.age }}</div>
+                <div class="col-md-1">{{ rf.ageunit.label_tag }}{{ rf.ageunit }}</div>
+                <div class="col-md-2">{{ rf.examtype.label_tag }}{{ rf.examtype }}</div>
+                <div class="col-md-3">{{ rf.examdate.label_tag }}{{ rf.examdate }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">{{ rf.hospital.label_tag }}{{ rf.hospital }}</div>
+                <div class="col-md-2">{{ rf.position.label_tag }}{{ rf.position }}</div>
+                <div class="col-md-3">{{ rf.method.label_tag }}{{ rf.method }}</div>
+                <div class="col-md-3">{{ rf.reportdate.label_tag }}{{ rf.reportdate }}</div> 
+            </div>
+            <div class="row">
+                <div class="col-md-12">{{ rf.indication.label_tag }}{{ rf.indication }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">{{ rf.findings.label_tag }}{{ rf.findings }}</div>
+            </div>
+            <div class="row">
+                    <div class="col-md-12">{{ rf.comments.label_tag }}{{ rf.comments }}</div>
+                </div>
+            <div class="row">
+                <div class="col-md-3">{{ rf.repdoctor.label_tag }}<input type="text"  name="repdoctor" value={{ request.session.user_name }} readonly = "readonly" class="form-control" maxlength="40" required id="id_repdoctor" /></div> 
+                <div class="col-md-3"><th><label for="id_levels">Levels</label></th><input type="text"  name="level" value={{ request.session.user_levels }} readonly = "readonly" class="form-control" maxlength="40" required id="id_level" /></div> 
+                <div class="col-md-2">{{ rf.status.label_tag }} {{ rf.status}}</div>
+            </div>
+            <div class="row">
+                
+                <button type="submit" class="btn btn-primary pull-right">SAVE</button>
+            </div>
+        </form>
+        </div>
+    </div> <!-- /container -->
+{% else %}
+    <li><a href="/login/">Login</a></li>
+{% endif %}
+{% endblock %}
